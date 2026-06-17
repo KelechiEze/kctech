@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Outfit", sans-serif;
+  
+  --color-brand: #d7fe03; /* Neon Lime */
+  --color-accent: #d7fe03; /* Syncing accent with brand for this scheme */
+  --color-dark: #1a1738; /* Darker Deep Purple - more blackish purple */
+  --color-dark-darker: #0f0e23; /* Even darker for gradients/overlays */
+
+  /* FIXED: Changed from 80s to a shorter time for visible movement */
+  --animate-infinite-scroll: infinite-scroll 25s linear infinite;
+
+  @keyframes infinite-scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  @keyframes gradient-flow {
+    0% { background-position: 0% 50%; background-image: linear-gradient(90deg, var(--color-brand), var(--color-accent), var(--color-brand)); }
+    50% { background-position: 100% 50%; background-image: linear-gradient(90deg, var(--color-brand), var(--color-accent), var(--color-brand)); }
+    100% { background-position: 0% 50%; background-image: linear-gradient(90deg, var(--color-brand), var(--color-accent), var(--color-brand)); }
+  }
+
+  --animate-gradient-flow: gradient-flow 6s ease infinite;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-dark text-white font-sans antialiased selection:bg-brand selection:text-dark;
+  }
+}
+
+/* Custom scrollbar for better polish */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-dark;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-zinc-800 rounded-full hover:bg-zinc-700 transition-colors;
+}
