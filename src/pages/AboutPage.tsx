@@ -14,15 +14,25 @@ export default function AboutPage() {
     <>
       <Navbar />
       <main className="relative min-h-screen selection:bg-brand selection:text-white bg-dark pt-24">
-        {/* Hero Section for About Page with Background Image */}
+        {/* Hero Section for About Page with Video Background */}
         <section className="relative py-20 px-4 overflow-hidden min-h-[60vh] flex items-center">
-          {/* Background Image with Overlay */}
-          <div 
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-            style={{
-              backgroundImage: `url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1920&q=80')`,
-            }}
-          />
+          {/* Video Background */}
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover"
+          >
+            <source src="/aboutvideo.mp4" type="video/mp4" />
+            {/* Fallback image if video doesn't load */}
+            <div 
+              className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+              style={{
+                backgroundImage: `url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1920&q=80')`,
+              }}
+            />
+          </video>
           
           {/* Dark Overlay Gradient */}
           <div className="absolute inset-0 bg-gradient-to-b from-dark/90 via-dark/70 to-dark/90" />
