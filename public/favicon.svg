@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+  <!-- Background circle -->
+  <circle cx="12" cy="12" r="11" fill="#d7fe03"/>
+  
+  <!-- Logo shape (from your Logo component) -->
+  <path 
+    d="M8 8C8 5.79086 9.79086 4 12 4C14.2091 4 16 5.79086 16 8V11C16 11.5523 15.5523 12 15 12H9C8.44772 12 8 11.5523 8 11V8Z" 
+    fill="#1a1738" 
+  />
+  <path 
+    d="M16 16C16 18.2091 14.2091 20 12 20C9.79086 20 8 18.2091 8 16V13C8 12.4477 8.44772 12 9 12H15C15.5523 12 16 12.4477 16 13V16Z" 
+    fill="#1a1738" 
+    fillOpacity="0.7"
+  />
+  <circle cx="12" cy="12" r="2" fill="#d7fe03" />
+</svg>

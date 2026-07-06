@@ -1,0 +1,20 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# ADD THIS AT THE BOTTOM:
+[prerendering]
+  ignored_extensions = [".xml", ".png", ".jpg", ".jpeg", ".svg", ".mp4", ".avif"]
