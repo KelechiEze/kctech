@@ -6,3 +6,6 @@ coverage/
 *.log
 .env*
 !.env.example
+public/huki.mp4
+public/earh.mp4
+public/aboutvideo.mp4
