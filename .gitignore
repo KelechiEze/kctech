@@ -9,3 +9,15 @@ coverage/
 public/huki.mp4
 public/earh.mp4
 public/aboutvideo.mp4
+
+# Media files - DO NOT COMMIT
+*.mp4
+*.mov
+*.avi
+*.webm
+*.png
+*.PNG
+*.jpg
+*.jpeg
+*.gif
+*.svg
