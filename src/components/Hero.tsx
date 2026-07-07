@@ -5,8 +5,7 @@ import { Instagram } from "lucide-react";
 
 export default function Hero() {
   const [videoError, setVideoError] = useState(false);
-  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
-  const videoRef = useRef(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -28,52 +27,56 @@ export default function Hero() {
     },
   };
 
-  // Ensure video plays on all browsers including mobile
   useEffect(() => {
     const playVideo = async () => {
       try {
         if (videoRef.current) {
-          // Set playsInline for mobile (required for iOS)
-          videoRef.current.setAttribute('playsInline', 'true');
-          videoRef.current.setAttribute('muted', 'true');
+          // Set video properties for background playback
+          videoRef.current.loop = true;
+          videoRef.current.muted = true;
+          videoRef.current.playsInline = true;
           
-          // Attempt to play
           await videoRef.current.play();
-          console.log("Video playing successfully");
-          setIsVideoLoaded(true);
+          console.log("Video playing successfully and looping");
         }
       } catch (error) {
         console.log("Video autoplay failed:", error);
         setVideoError(true);
         
-        // Try to play on user interaction for mobile
-        const handleUserInteraction = () => {
-          if (videoRef.current && videoError) {
+        // Try on user interaction for mobile
+        const handleInteraction = () => {
+          if (videoRef.current) {
+            videoRef.current.loop = true;
             videoRef.current.play().catch(e => console.log("Still can't play:", e));
           }
-          document.removeEventListener('click', handleUserInteraction);
-          document.removeEventListener('touchstart', handleUserInteraction);
+          document.removeEventListener('click', handleInteraction);
+          document.removeEventListener('touchstart', handleInteraction);
         };
         
-        document.addEventListener('click', handleUserInteraction);
-        document.addEventListener('touchstart', handleUserInteraction);
+        document.addEventListener('click', handleInteraction);
+        document.addEventListener('touchstart', handleInteraction);
       }
     };
 
-    // Small delay to ensure DOM is ready
     setTimeout(playVideo, 100);
   }, []);
 
-  // Instagram link handler
+  // Force restart if video ends for any reason
+  const handleVideoEnded = () => {
+    if (videoRef.current) {
+      videoRef.current.currentTime = 0;
+      videoRef.current.play().catch(e => console.log("Loop restart failed:", e));
+    }
+  };
+
   const handleInstagramClick = () => {
     window.open('https://www.instagram.com/bizzju.mp?igsh=b21jNDMyNzQ3dmhy&utm_source=qr', '_blank');
   };
 
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-start pt-20 overflow-hidden pb-10">
-      {/* Background Video */}
+      {/* Background Video - From Public Folder */}
       <div className="absolute inset-0 z-0">
-        {/* Video element - using ref for better control */}
         <video 
           ref={videoRef}
           autoPlay 
@@ -83,34 +86,39 @@ export default function Hero() {
           preload="auto"
           className="absolute inset-0 w-full h-full object-cover"
           style={{ opacity: videoError ? 0 : 0.4 }}
-          onLoadedData={() => console.log("Video loaded")}
-          onError={(e) => {
-            console.log("Video error:", e);
-            setVideoError(true);
+          onError={() => setVideoError(true)}
+          onEnded={handleVideoEnded}
+          onLoadedData={() => {
+            console.log("Video loaded successfully");
+            if (videoRef.current) {
+              videoRef.current.loop = true;
+            }
           }}
         >
+          {/* Local video file from public folder */}
           <source 
             src="/huki.mp4" 
             type="video/mp4" 
           />
+          {/* Fallback if you have WebM version */}
           <source 
             src="/huki.webm" 
             type="video/webm" 
           />
         </video>
         
-        {/* Fallback animated gradient if video fails on mobile */}
+        {/* Fallback animated gradient if video fails */}
         {videoError && (
           <div className="absolute inset-0 bg-gradient-to-br from-dark via-dark/90 to-brand/20 animate-pulse">
             <div className="absolute inset-0 bg-gradient-to-r from-brand/20 via-transparent to-brand/20 animate-shimmer" />
           </div>
         )}
         
-        {/* Gradient overlays - lighter on mobile for better visibility */}
+        {/* Gradient overlays */}
         <div className="absolute inset-0 bg-gradient-to-r from-dark via-dark/70 to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-t from-dark/60 via-transparent to-transparent" />
         
-        {/* Soft Glows - reduced on mobile for performance */}
+        {/* Soft Glows */}
         <div className="absolute top-1/4 left-1/4 w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-brand/10 blur-[80px] md:blur-[120px] rounded-full animate-pulse" />
       </div>
 
@@ -120,7 +128,7 @@ export default function Hero() {
         animate="visible"
         className="container relative z-10 px-4 sm:px-6 max-w-5xl text-left ml-0 sm:ml-6 lg:ml-20"
       >
-        {/* Tagline - responsive spacing - REDUCED SIZE */}
+        {/* Tagline */}
         <motion.div variants={itemVariants} className="flex items-center justify-start gap-2 sm:gap-3 mb-4 sm:mb-6">
           <div className="h-[1px] w-4 sm:w-6 bg-brand/50" />
           <div className="flex flex-col gap-1">
@@ -132,7 +140,7 @@ export default function Hero() {
           </span>
         </motion.div>
 
-        {/* NEW HEADLINE */}
+        {/* Headline */}
         <motion.h1
           variants={itemVariants}
           className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-display font-bold leading-[1.2] sm:leading-[1.1] mb-4 sm:mb-6 tracking-tight"
@@ -141,7 +149,7 @@ export default function Hero() {
           <span className="text-white">More Customers</span>
         </motion.h1>
 
-        {/* NEW SUBHEADLINE */}
+        {/* Subheadline */}
         <motion.p
           variants={itemVariants}
           className="text-sm sm:text-base md:text-lg text-white/60 max-w-2xl mb-6 sm:mb-8 leading-relaxed font-light pr-4 sm:pr-0"
@@ -149,12 +157,12 @@ export default function Hero() {
           Helping small businesses all over the world grow online with fast modern websites.
         </motion.p>
 
-        {/* CTA Buttons - NEW CTA TEXT */}
+        {/* CTA Buttons */}
         <motion.div 
           variants={itemVariants} 
           className="flex flex-col sm:flex-row gap-3 sm:gap-5 justify-start"
         >
-          {/* Book Free Consultation Button - UPDATED */}
+          {/* Book Free Consultation Button */}
           <motion.a 
             href="#contact"
             whileHover={{ 
@@ -173,7 +181,7 @@ export default function Hero() {
             </Button>
           </motion.a>
 
-          {/* Instagram Button - KEPT AS IS */}
+          {/* Instagram Button */}
           <motion.button
             onClick={handleInstagramClick}
             whileHover={{ 
