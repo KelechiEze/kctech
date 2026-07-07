@@ -134,16 +134,15 @@ export default function PortfolioSection() {
           </AnimatePresence>
         </div>
 
-        {/* Load More Button - UPDATED: Smaller & Darker */}
+        {/* Load More Button - UPDATED: Shows brand green on hover */}
         {projects.length > initialCount && (
           <div className="flex justify-center mt-12">
             <motion.button
               onClick={() => setShowAll(!showAll)}
-              className="group relative px-8 py-3 bg-dark text-white font-semibold rounded-full overflow-hidden transition-all duration-300 hover:bg-dark/80 text-sm tracking-wide"
+              className="group relative px-8 py-3 bg-dark text-white font-semibold rounded-full overflow-hidden transition-all duration-300 text-sm tracking-wide border-2 border-dark hover:border-brand hover:bg-brand"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
-              {/* Button text */}
               <span className="relative flex items-center gap-2">
                 {showAll ? (
                   <>
