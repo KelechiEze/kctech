@@ -31,7 +31,6 @@ const projects = [
     url: "https://greydient.co/",
     description: "Helping digital learners move from learning to earning."
   },
-  // 🆕 4 NEW PROJECTS
   {
     title: "RAD",
     category: "Ecommerce App",
@@ -70,7 +69,7 @@ export default function PortfolioSection() {
   return (
     <section id="work" className="py-24 bg-white text-dark overflow-hidden">
       <div className="container mx-auto px-6 max-w-7xl">
-        {/* Header - Unchanged */}
+        {/* Header */}
         <div className="flex flex-col md:flex-row justify-between items-end gap-8 mb-16">
           <div className="space-y-4">
             <div className="flex items-center gap-2">
@@ -135,18 +134,15 @@ export default function PortfolioSection() {
           </AnimatePresence>
         </div>
 
-        {/* Load More Button */}
+        {/* Load More Button - UPDATED: Smaller & Darker */}
         {projects.length > initialCount && (
           <div className="flex justify-center mt-12">
             <motion.button
               onClick={() => setShowAll(!showAll)}
-              className="group relative px-10 py-4 bg-transparent border-2 border-brand text-brand font-bold rounded-full overflow-hidden transition-colors duration-300 hover:text-white"
+              className="group relative px-8 py-3 bg-dark text-white font-semibold rounded-full overflow-hidden transition-all duration-300 hover:bg-dark/80 text-sm tracking-wide"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
-              {/* Animated background fill */}
-              <span className="absolute inset-0 bg-brand transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-in-out" />
-              
               {/* Button text */}
               <span className="relative flex items-center gap-2">
                 {showAll ? (
@@ -157,13 +153,13 @@ export default function PortfolioSection() {
                       animate={{ rotate: 180 }}
                       transition={{ duration: 0.3 }}
                     >
-                      <ArrowRight className="w-5 h-5" />
+                      <ArrowRight className="w-4 h-4" />
                     </motion.span>
                   </>
                 ) : (
                   <>
                     Load More Projects
-                    <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+                    <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                   </>
                 )}
               </span>
