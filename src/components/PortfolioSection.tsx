@@ -6,14 +6,14 @@ const projects = [
   {
     title: "CIAS Models",
     category: "Model Agency Website",
-    image: "/new.png",
+    image: "https://kelechieze.wordpress.com/wp-content/uploads/2026/07/cias.png",
     url: "https://www.ciasmodels.com/",
     description: "A Model agency website"
   },
   {
     title: "ThryveAcademy",
     category: "E-Commerce",
-    image: "/thryve.png",
+    image: "https://kelechieze.wordpress.com/wp-content/uploads/2026/07/thryveacademy.png",
     url: "https://thryveacademy.co/",
     description: "An E-commerce platform designed to host and scale online learning."
   },
@@ -27,7 +27,7 @@ const projects = [
   {
     title: "Greydient",
     category: "Web Application",
-    image: "/greydient.png",
+    image: "https://kelechieze.wordpress.com/wp-content/uploads/2026/07/rad.png",
     url: "https://greydient.co/",
     description: "Helping digital learners move from learning to earning."
   },
@@ -35,28 +35,28 @@ const projects = [
   {
     title: "RAD",
     category: "Ecommerce App",
-    image: "/rad.png",
+    image: "https://kelechieze.wordpress.com/wp-content/uploads/2026/07/rad.png",
     url: "https://rad.ng/",
     description: "A carbon footprint tracking app helping businesses reduce their environmental impact."
   },
   {
     title: "CADEMIE",
     category: "Educational Visa Platform",
-    image: "/cademie.png",
+    image: "https://kelechieze.wordpress.com/wp-content/uploads/2026/07/cademie.png",
     url: "https://cademie.org.uk/",
     description: "A telemedicine platform connecting patients with healthcare providers seamlessly."
   },
   {
     title: "Auxil",
     category: "SaaS Platform",
-    image: "/auxil.png",
+    image: "https://kelechieze.wordpress.com/wp-content/uploads/2026/07/auxil.png",
     url: "https://auxil.findar.site/",
     description: "A secure digital banking solution with AI-powered financial insights."
   },
   {
     title: "Klimbase",
     category: "Creative Marketplace",
-    image: "/Saas.png",
+    image: "https://kelechieze.wordpress.com/wp-content/uploads/2026/07/klimebase.png",
     url: "https://klimebase.findar.site/",
     description: "A curated marketplace connecting collectors with emerging digital artists."
   }
