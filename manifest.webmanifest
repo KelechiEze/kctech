@@ -1,25 +1,28 @@
 {
-  "id": "/",
   "name": "BizzJump – Launch Your Business Online",
   "short_name": "BizzJump",
   "description": "BizzJump provides professional website development and digital solutions to help businesses launch, grow, and succeed online.",
-  "start_url": "/",
+  "start_url": "https://bizzjump.com/",
   "scope": "/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#d7fe03",
+  "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "/android-chrome-192x192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any"
+      "src": "/favicon.png",
+      "sizes": "96x96",
+      "type": "image/png"
     },
     {
-      "src": "/android-chrome-512x512.png",
+      "src": "/favicon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon.png",
       "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any"
+      "type": "image/png"
     }
   ]
 }
