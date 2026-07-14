@@ -22,27 +22,19 @@
     <!-- Canonical URL -->
     <link rel="canonical" href="https://bizzjump.com/" />
 
-    <!-- Main favicon for Google Search and browsers -->
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="96x96"
-      href="/favicon.png"
-    />
+    <!-- CRITICAL FIX: Favicon for Google Search Results -->
+    <!-- Google recommends 16x16 or 32x32 for search results -->
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    
+    <!-- Standard favicon -->
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon.png" />
 
     <!-- Traditional browser fallback -->
-    <link
-      rel="shortcut icon"
-      type="image/x-icon"
-      href="/favicon.ico"
-    />
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
 
     <!-- Apple devices -->
-    <link
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href="/apple-touch-icon.png"
-    />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 
     <!-- Browser theme colour -->
     <meta name="theme-color" content="#d7fe03" />
@@ -104,10 +96,9 @@
       content="BizzJump – Launch Your Business Online"
     />
 
-    <!-- PWA Metadata - Using JSON file like APMEN example -->
+    <!-- PWA Metadata -->
     <link rel="manifest" href="/metadata.json" />
     
-    <!-- Additional PWA meta tags -->
     <meta name="application-name" content="BizzJump" />
     <meta name="apple-mobile-web-app-title" content="BizzJump" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
