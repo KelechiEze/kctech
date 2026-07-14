@@ -35,15 +35,14 @@ export default function ContactSection() {
       console.log('Submitting form to:', `${API_URL}/api/contact`);
       console.log('Form data:', formData);
       
-      // COMMENTED OUT - THIS BREAKS THE FORM SUBMISSION
-      // const response = await fetch(`${API_URL}/api/contact`, {
-      //   method: 'POST',
-      //   headers: { 
-      //     'Content-Type': 'application/json',
-      //     'Accept': 'application/json'
-      //   },
-      //   body: JSON.stringify(formData)
-      // });
+      const response = await fetch(`${API_URL}/api/contact`, {
+        method: 'POST',
+        headers: { 
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      });
       
       console.log('Response status:', response.status);
       
